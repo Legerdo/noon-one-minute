@@ -1,0 +1,91 @@
+// Endesga 32 팔레트 기반. 모든 아트는 이 색만 쓴다.
+export const PAL = {
+  ink: 0x181425,
+  night: 0x262b44,
+  dslate: 0x3a4466,
+  slate: 0x5a6988,
+  steel: 0x8b9bb4,
+  silver: 0xc0cbdc,
+  white: 0xffffff,
+  dbrown: 0x3e2731,
+  brown: 0x733e39,
+  copper: 0xb86f50,
+  tan: 0xe4a672,
+  cream: 0xead4aa,
+  rust: 0xbe4a2f,
+  orange: 0xd77643,
+  borange: 0xf77622,
+  gold: 0xfeae34,
+  yellow: 0xfee761,
+  crimson: 0xa22633,
+  red: 0xe43b44,
+  hotred: 0xff0044,
+  green: 0x63c74d,
+  mgreen: 0x3e8948,
+  dgreen: 0x265c42,
+  teal: 0x193c3e,
+  navy: 0x124e89,
+  blue: 0x0099db,
+  cyan: 0x2ce8f5,
+  plum: 0x68386c,
+  magenta: 0xb55088,
+  pink: 0xf6757a,
+  skin: 0xe8b796,
+  skinsh: 0xc28569,
+} as const;
+
+export type PalName = keyof typeof PAL;
+
+/** ASCII 스프라이트용 문자 → 색. '.'과 ' '는 투명. */
+export const CHARS: Readonly<Record<string, number>> = {
+  k: PAL.ink,
+  n: PAL.night,
+  d: PAL.dslate,
+  s: PAL.slate,
+  e: PAL.steel,
+  i: PAL.silver,
+  w: PAL.white,
+  b: PAL.dbrown,
+  r: PAL.brown,
+  c: PAL.copper,
+  t: PAL.tan,
+  m: PAL.cream,
+  u: PAL.rust,
+  o: PAL.orange,
+  O: PAL.borange,
+  g: PAL.gold,
+  y: PAL.yellow,
+  C: PAL.crimson,
+  R: PAL.red,
+  H: PAL.hotred,
+  G: PAL.green,
+  M: PAL.mgreen,
+  D: PAL.dgreen,
+  T: PAL.teal,
+  N: PAL.navy,
+  B: PAL.blue,
+  Y: PAL.cyan,
+  p: PAL.plum,
+  P: PAL.magenta,
+  q: PAL.pink,
+  f: PAL.skin,
+  F: PAL.skinsh,
+};
+
+export function hex(c: number): string {
+  return '#' + c.toString(16).padStart(6, '0');
+}
+
+/** 밝기 램프: 금속·재질별 명암 단계 (어두움 → 밝음). */
+export const RAMP = {
+  brass: [PAL.dbrown, PAL.brown, PAL.copper, PAL.tan, PAL.cream],
+  gold: [PAL.brown, PAL.rust, PAL.borange, PAL.gold, PAL.yellow],
+  steel: [PAL.ink, PAL.night, PAL.dslate, PAL.slate, PAL.steel, PAL.silver, PAL.white],
+  rust: [PAL.dbrown, PAL.brown, PAL.rust, PAL.orange, PAL.tan],
+  wood: [PAL.dbrown, PAL.brown, PAL.copper, PAL.tan],
+  navy: [PAL.ink, PAL.night, PAL.navy, PAL.blue],
+  green: [PAL.teal, PAL.dgreen, PAL.mgreen, PAL.green],
+  red: [PAL.dbrown, PAL.crimson, PAL.red, PAL.pink],
+  plum: [PAL.ink, PAL.plum, PAL.magenta, PAL.pink],
+  time: [PAL.night, PAL.navy, PAL.blue, PAL.cyan, PAL.white],
+} as const;

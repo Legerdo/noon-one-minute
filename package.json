@@ -1,0 +1,27 @@
+{
+  "name": "noon-one-minute",
+  "private": true,
+  "version": "1.0.0",
+  "description": "정오 1분 전 — 장비와 시간을 읽는 2D 픽셀 아트 전술 RPG",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "balance": "vitest run tests/balance.test.ts --reporter=verbose",
+    "e2e": "node scripts/playtest.mjs",
+    "deploy": "node scripts/deploy-pages.mjs"
+  },
+  "dependencies": {
+    "galmuri": "2.40.3",
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "playwright-core": "1.63.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "vitest": "5.0.2"
+  }
+}
