@@ -30,4 +30,6 @@ try {
 } finally {
   run(`git worktree remove "${dir}" --force`);
   if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
+  // 첫 배포 때 만든 임시 로컬 브랜치 정리(원격 gh-pages에는 이미 올라가 있다).
+  if (out('git branch --list gh-pages-tmp') !== '') run('git branch -D gh-pages-tmp');
 }
